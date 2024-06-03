@@ -26,6 +26,7 @@ class HomeScreen extends StatelessWidget {
             Image.asset(
               'asset/img/logo.png',
             ),
+            SizedBox(height: 28.0), ///높이가 있는 박스
             CircularProgressIndicator(
               color: Colors.white,
             ),
