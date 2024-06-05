@@ -12,6 +12,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    print('build 실행!');
+
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -28,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                 print('색상 변경: color: $color');
 
-                setState((){});
+                setState((){}); ///setState를 만나면 build함수가 다시 실행된다!!
               },
               child: Text(
                   '색상 변경!'
