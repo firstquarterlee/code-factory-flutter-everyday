@@ -1,35 +1,84 @@
 import 'package:flutter/material.dart';
-import 'package:webview_flutter/webview_flutter.dart';
 
-final homeUrl = Uri.parse('https://blog.codefactory.ai');
+///StatefulWidget 실습
+class HomeScreen extends StatefulWidget {
 
-class HomeScreen extends StatelessWidget {
-  WebViewController controller = WebViewController()
-  ..setJavaScriptMode(JavaScriptMode.unrestricted)
-    ..loadRequest(homeUrl);
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
-  HomeScreen({super.key});
+class _HomeScreenState extends State<HomeScreen> {
+  Color color = Colors.blue;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('앱바'),
-        centerTitle: true,
-        backgroundColor: Colors.orange,
-        actions: [
-          IconButton( ///onPressed는 콜백함수다.
-            onPressed: (){
-              controller.loadRequest(homeUrl); ///여기로 이동
-            },
-            icon: Icon(
-              Icons.home
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: (){
+                if(color == Colors.blue){
+                  color = Colors.red;
+                }else{
+                  color = Colors.blue;
+                }
+
+                print('색상 변경: color: $color');
+              },
+              child: Text(
+                  '색상 변경!'
+              ),
             ),
-          ),
-        ],
+            SizedBox(height: 32.0),
+            Container(
+              width: 50.0,
+              height: 50.0,
+              color: color,
+            )
+          ],
+        ),
       ),
-      body: WebViewWidget(
-        controller: controller,
+    );
+  }
+}
+
+///StatelessWidget 실습
+class HomeScreen2 extends StatelessWidget {
+  Color color = Colors.blue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        width: double.infinity,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: (){
+                if(color == Colors.blue){
+                  color = Colors.red;
+                }else{
+                  color = Colors.blue;
+                }
+
+                print('색상 변경: color: $color');
+              },
+              child: Text(
+                '색상 변경!'
+              ),
+            ),
+            SizedBox(height: 32.0),
+            Container(
+              width: 50.0,
+              height: 50.0,
+              color: color,
+            )
+          ],
+        ),
       ),
     );
   }
